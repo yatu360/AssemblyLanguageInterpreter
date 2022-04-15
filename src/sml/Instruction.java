@@ -8,6 +8,9 @@ package sml;
 public abstract class Instruction {
   private String label;
   private String opcode;
+  protected int register;
+  protected int s1;
+  protected int s2;
 
   /**
    * Constructor: an instruction with label l and opcode op
@@ -16,9 +19,12 @@ public abstract class Instruction {
    * @param l  label
    * @param op operand
    */
-  public Instruction(String l, String op) {
+  public Instruction(String l, String op, int register, int s1, int s2 ) {
     setLabel(l);
     setOpcode(op);
+    this.register = register;
+    this.s1 = s1;
+    this.s2 = s2;
   }
 
   public final String getLabel() {
