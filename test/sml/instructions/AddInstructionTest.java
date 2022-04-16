@@ -14,8 +14,10 @@ class AddInstructionTest {
 
   @BeforeEach
   void setUp() {
-    m = new Machine();
-    //...
+//    this.m = new Machine();
+//    t = new Translator("test/sml/testData/add.sml");
+//    t.readAndTranslate(m.getLabels(), m.getProg());
+//
   }
 
   @AfterEach
@@ -24,9 +26,16 @@ class AddInstructionTest {
 
   @Test
   void execute() {
+    Machine machine = new Machine();
+    Translator translator = new Translator("test/sml/testData/add.sml");
+    translator.readAndTranslate(machine.getLabels(), machine.getProg());
+    machine.execute();
+    //assertEquals(97, machine.getRegisters().getRegister(0));
+    System.out.println(machine.getRegisters().getRegister(0));
   }
 
   @Test
   void testToString() {
+    System.out.println(m.toString());
   }
 }

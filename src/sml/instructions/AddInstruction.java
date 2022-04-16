@@ -2,19 +2,20 @@ package sml.instructions;
 
 import sml.Instruction;
 import sml.Machine;
-
+import lombok.RequiredArgsConstructor;
 /**
  * This class represents the Add instruction from the language.
  *
  * @author Yathurshen Muralitharan (github: yatu360)
  */
+@RequiredArgsConstructor
 public class AddInstruction implements Instruction {
     private static final String OPCODE = "add";
 
-    private String label;
-    private int result;
-    private int op1;
-    private int op2;
+    private final String label;
+    private final int result;
+    private final int op1;
+    private final int op2;
 
 
     /**

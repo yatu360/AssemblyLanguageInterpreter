@@ -2,13 +2,17 @@ package sml.instructions;
 
 import sml.Instruction;
 import sml.Machine;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class LinInstruction implements Instruction {
     private static final String OPCODE = "lin";
 
-    private String label;
-    private int register;
-    private int value;
+    private final String label;
+    private final int register;
+    private final int value;
+
+
 
     /**
      * Returns the label of the instruction.
