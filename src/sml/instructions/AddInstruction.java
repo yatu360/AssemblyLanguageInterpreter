@@ -6,12 +6,35 @@ import sml.Machine;
 /**
  * This class represents the Add instruction from the language.
  *
- * @author ...
+ * @author Yathurshen Muralitharan (github: yatu360)
  */
-public class AddInstruction extends Instruction {
+public class AddInstruction implements Instruction {
+    private static final String OPCODE = "add";
 
-    public AddInstruction(String label, int register, int s1, int s2){
-        super(label, "ADD", register, s1, s2);
+    private String label;
+    private int result;
+    private int op1;
+    private int op2;
+
+
+    /**
+     * Returns the label of the instruction.
+     *
+     * @return label of the instruction.
+     */
+    @Override
+    public String getLabel() {
+        return this.label;
+    }
+
+    /**
+     * Returns the instruction opcode.
+     *
+     * @return instruction opcode.
+     */
+    @Override
+    public String getOpcode() {
+        return OPCODE;
     }
 
     /**
@@ -21,6 +44,18 @@ public class AddInstruction extends Instruction {
      */
     @Override
     public void execute(Machine m) {
+        int value1 = m.getRegisters().getRegister(op1);
+        int value2 = m.getRegisters().getRegister(op2);
+        m.getRegisters().setRegister(result, value1 + value2);
+    }
 
+    /**
+     * String representation of the instruction.
+     *
+     * @return representation of the operands and result
+     */
+    @Override
+    public String toString() {
+        return getLabel() + ": " + getOpcode() + " " + op1 + " + " + op2 + " => " + result;
     }
 }
