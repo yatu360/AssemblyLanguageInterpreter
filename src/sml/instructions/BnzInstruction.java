@@ -10,13 +10,12 @@ public class BnzInstruction extends Instruction{
      * (op must be an operation of the language)
      *
      * @param l        label
-     * @param op       operand
      * @param register
      * @param s1
      * @param s2
      */
-    public BnzInstruction(String l, String op, int register, int s1, int s2) {
-        super(l, op, register, s1, s2);
+    public BnzInstruction(String l, int register, int s1, int s2) {
+        super(l, "bnz", register, s1, s2);
     }
 
     @Override
