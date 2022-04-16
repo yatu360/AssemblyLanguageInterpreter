@@ -3,22 +3,53 @@ package sml.instructions;
 import sml.Instruction;
 import sml.Machine;
 
-public class SubInstruction extends Instruction {
+public class SubInstruction implements Instruction {
+    private static final String OPCODE = "sub";
+
+    private String label;
+    private int result;
+    private int op1;
+    private int op2;
+
     /**
-     * Constructor: an instruction with label l and opcode op
-     * (op must be an operation of the language)
+     * Returns the label of the instruction.
      *
-     * @param l        label
-     * @param register
-     * @param s1
-     * @param s2
+     * @return label of the instruction.
      */
-    public SubInstruction(String l, int register, int s1, int s2) {
-        super(l, "sub", register, s1, s2);
+    @Override
+    public String getLabel() {
+        return this.label;
     }
 
+    /**
+     * Returns the instruction opcode.
+     *
+     * @return instruction opcode.
+     */
+    @Override
+    public String getOpcode() {
+        return OPCODE;
+    }
+
+    /**
+     * Execute the instruction and update the result register.
+     *
+     * @param m the machine under which the instruction executes
+     */
     @Override
     public void execute(Machine m) {
+        int value1 = m.getRegisters().getRegister(op1);
+        int value2 = m.getRegisters().getRegister(op2);
+        m.getRegisters().setRegister(result, value1 - value2);
+    }
 
+    /**
+     * String representation of the instruction
+     *
+     * @return representation of the operands and result
+     */
+    @Override
+    public String toString() {
+        return getLabel() + ": " + getOpcode() + " " + op1 + " - " + op2 + " to " + result;
     }
 }

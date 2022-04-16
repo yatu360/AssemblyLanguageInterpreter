@@ -3,22 +3,50 @@ package sml.instructions;
 import sml.Instruction;
 import sml.Machine;
 
-public class LinInstruction extends Instruction {
+public class LinInstruction implements Instruction {
+    private static final String OPCODE = "lin";
+
+    private String label;
+    private int register;
+    private int value;
+
     /**
-     * Constructor: an instruction with label l and opcode op
-     * (op must be an operation of the language)
+     * Returns the label of the instruction.
      *
-     * @param l        label
-     * @param register
-     * @param s1
-     * @param s2
+     * @return label of the instruction.
      */
-    public LinInstruction(String l, int register, int s1, int s2) {
-        super(l, "lin", register, s1, s2);
+    @Override
+    public String getLabel() {
+        return this.label;
     }
 
+    /**
+     * Returns the instruction opcode.
+     *
+     * @return instruction opcode.
+     */
+    @Override
+    public String getOpcode() {
+        return OPCODE;
+    }
+
+    /**
+     * Execute the instruction and update the register with the specified value.
+     *
+     * @param m the machine under which the instruction executes
+     */
     @Override
     public void execute(Machine m) {
+        m.getRegisters().setRegister(register, value);
+    }
 
+    /**
+     * String representation of the instruction
+     *
+     * @return incorporating the value
+     */
+    @Override
+    public String toString() {
+        return getLabel() + ": " + getOpcode() + " register " + register + " value is " + value;
     }
 }

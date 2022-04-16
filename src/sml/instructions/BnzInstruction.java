@@ -1,25 +1,63 @@
 package sml.instructions;
 
 import sml.Instruction;
+import sml.LabelsBridge;
 import sml.Machine;
 
-public class BnzInstruction extends Instruction{
+/**
+ * This class represents the Branch Not Zero instruction from the language.
+ *
+ * @author Yathurshen Muralitharan (github: yatu360)
+ */
+public class BnzInstruction implements Instruction {
+    private static final String OPCODE = "bnz";
+
+    private String label;
+    private int register;
+    private String goToLabel;
 
     /**
-     * Constructor: an instruction with label l and opcode op
-     * (op must be an operation of the language)
+     * Returns the label of the instruction.
      *
-     * @param l        label
-     * @param register
-     * @param s1
-     * @param s2
+     * @return label of the instruction.
      */
-    public BnzInstruction(String l, int register, int s1, int s2) {
-        super(l, "bnz", register, s1, s2);
+    @Override
+    public String getLabel() {
+        return this.label;
     }
 
+    /**
+     * Returns the instruction opcode.
+     *
+     * @return instruction opcode.
+     */
+    @Override
+    public String getOpcode() {
+        return OPCODE;
+    }
+
+    /**
+     * Execute the instruction and update PC if register value is not zero.
+     *
+     * @param m the machine under which the instruction executes
+     */
     @Override
     public void execute(Machine m) {
+        if (m.getRegisters().getRegister(register) != 0) {
+            var t = new LabelsBridge(m.getLabels());
+            m.setPc(t.indexOf(goToLabel));
+        }
+    }
+
+    /**
+     * String representation of the instruction
+     *
+     * @return representation of the operands and result
+     */
+    @Override
+    public String toString() {
+        return getLabel() + ": " + getOpcode() + " if the contents of register " + register + " is not zero, " +
+                "then make the statement labeled " + goToLabel + " the next one to execute";
 
     }
 }
