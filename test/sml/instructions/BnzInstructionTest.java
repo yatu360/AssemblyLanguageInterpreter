@@ -22,10 +22,8 @@ public class BnzInstructionTest {
     void execute() {
 
         m.execute();
-        assertEquals(6, m.getRegisters().getRegister(22));
-        assertEquals(5, m.getPc());
-        System.out.println(m.getProg());
-        System.out.println(m.getPc());
+        assertEquals(720, m.getRegisters().getRegister(21));
+        assertEquals(7, m.getPc());
     }
 
     @Test

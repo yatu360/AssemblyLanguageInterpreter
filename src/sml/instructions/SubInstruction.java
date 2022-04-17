@@ -4,6 +4,11 @@ import lombok.RequiredArgsConstructor;
 import sml.Instruction;
 import sml.Machine;
 
+/**
+ * This class represents the Subtraction instruction from the language.
+ *
+ * @author Yathurshen Muralitharan (GitHub: yatu360)
+ */
 @RequiredArgsConstructor
 public class SubInstruction implements Instruction {
     private static final String OPCODE = "sub";

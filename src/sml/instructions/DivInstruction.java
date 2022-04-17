@@ -4,6 +4,11 @@ import lombok.RequiredArgsConstructor;
 import sml.Instruction;
 import sml.Machine;
 
+/**
+ * This class represents the Division instruction from the language.
+ *
+ * @author Yathurshen Muralitharan (GitHub: yatu360)
+ */
 @RequiredArgsConstructor
 public class DivInstruction implements Instruction {
     private static final String OPCODE = "div";

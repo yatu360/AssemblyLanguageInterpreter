@@ -4,6 +4,11 @@ import lombok.RequiredArgsConstructor;
 import sml.Instruction;
 import sml.Machine;
 
+/**
+ * This class represents the Multiplication instruction from the language.
+ *
+ * @author Yathurshen Muralitharan (GitHub: yatu360)
+ */
 @RequiredArgsConstructor
 public class MulInstruction implements Instruction {
     private static final String OPCODE = "mul";
