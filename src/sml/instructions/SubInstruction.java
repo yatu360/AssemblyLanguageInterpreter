@@ -1,15 +1,17 @@
 package sml.instructions;
 
+import lombok.RequiredArgsConstructor;
 import sml.Instruction;
 import sml.Machine;
 
+@RequiredArgsConstructor
 public class SubInstruction implements Instruction {
     private static final String OPCODE = "sub";
 
-    private String label;
-    private int result;
-    private int op1;
-    private int op2;
+    private final String label;
+    private final int resultRegister;
+    private final int op1;
+    private final int op2;
 
     /**
      * Returns the label of the instruction.
@@ -40,7 +42,7 @@ public class SubInstruction implements Instruction {
     public void execute(Machine m) {
         int value1 = m.getRegisters().getRegister(op1);
         int value2 = m.getRegisters().getRegister(op2);
-        m.getRegisters().setRegister(result, value1 - value2);
+        m.getRegisters().setRegister(resultRegister, value1 - value2);
     }
 
     /**
@@ -50,6 +52,6 @@ public class SubInstruction implements Instruction {
      */
     @Override
     public String toString() {
-        return getLabel() + ": " + getOpcode() + " " + op1 + " - " + op2 + " to " + result;
+        return getLabel() + ": " + getOpcode() + " " + op1 + " - " + op2 + " => " + resultRegister;
     }
 }

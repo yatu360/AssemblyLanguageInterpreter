@@ -1,5 +1,6 @@
 package sml.instructions;
 
+import lombok.RequiredArgsConstructor;
 import sml.Instruction;
 import sml.LabelsBridge;
 import sml.Machine;
@@ -7,14 +8,15 @@ import sml.Machine;
 /**
  * This class represents the Branch Not Zero instruction from the language.
  *
- * @author Yathurshen Muralitharan (github: yatu360)
+ * @author Yathurshen Muralitharan (GitHub: yatu360)
  */
+@RequiredArgsConstructor
 public class BnzInstruction implements Instruction {
     private static final String OPCODE = "bnz";
 
-    private String label;
-    private int register;
-    private String goToLabel;
+    private final String label;
+    private final int register;
+    private final String goToLabel;
 
     /**
      * Returns the label of the instruction.
