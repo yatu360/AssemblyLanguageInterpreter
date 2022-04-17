@@ -51,6 +51,6 @@ public class LinInstruction implements Instruction {
      */
     @Override
     public String toString() {
-        return getLabel() + ": " + getOpcode() + " register " + register + " value is " + value;
+        return getLabel() + ": " + getOpcode() + " operation" + " register " + register + " now has value " + value;
     }
 }

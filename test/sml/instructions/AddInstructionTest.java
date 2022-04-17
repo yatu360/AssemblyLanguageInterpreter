@@ -1,6 +1,5 @@
 package sml.instructions;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sml.Machine;
@@ -14,24 +13,16 @@ class AddInstructionTest {
 
   @BeforeEach
   void setUp() {
-//    this.m = new Machine();
-//    t = new Translator("test/sml/testData/add.sml");
-//    t.readAndTranslate(m.getLabels(), m.getProg());
-//
-  }
-
-  @AfterEach
-  void tearDown() {
+    m = new Machine();
+    t = new Translator("test/sml/testInputData/add.sml");
+    t.readAndTranslate(m.getLabels(), m.getProg());
   }
 
   @Test
   void execute() {
-    Machine machine = new Machine();
-    Translator translator = new Translator("test/sml/testData/add.sml");
-    translator.readAndTranslate(machine.getLabels(), machine.getProg());
-    machine.execute();
-    //assertEquals(97, machine.getRegisters().getRegister(0));
-    System.out.println(machine.getRegisters().getRegister(0));
+
+    m.execute();
+    assertEquals(16, m.getRegisters().getRegister(4));
   }
 
   @Test
