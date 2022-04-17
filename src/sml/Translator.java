@@ -13,7 +13,7 @@ import java.util.*;
  * <p>
  * The translator of a <b>S</b><b>M</b>al<b>L</b> program.
  *
- * @author Yathurshen Muralitharan (github: yatu360)
+ * @author Yathurshen Muralitharan (GitHub: yatu360)
  */
 public final class Translator {
 
@@ -41,11 +41,11 @@ public final class Translator {
             // The program to be created
             prog.clear();
 
-            try {
-                line = sc.nextLine();
-            } catch (NoSuchElementException ioE) {
-                return false;
-            }
+//            try {
+//                line = sc.nextLine();
+//            } catch (NoSuchElementException ioE) {
+//                return false;
+//            }
 
             // Each iteration processes line and reads the next input line into "line"
             while (sc.hasNextLine()) {

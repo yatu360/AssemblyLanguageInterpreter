@@ -9,19 +9,9 @@ import java.util.Arrays;
 import java.util.Properties;
 
 /**
- * Exception happens when it is not possible to find the code that handles an opcode.
- */
-class InstructionNotFoundException extends Exception {
-
-    public InstructionNotFoundException(String message) {
-        super(message);
-    }
-}
-
-/**
  * This class is responsible for creating instructions.
  *
- * @author Yathurshen Muralitharan (yatu360)
+ * @author Yathurshen Muralitharan (GitHub: yatu360)
  */
 public class InstructionFactory {
 
@@ -76,7 +66,7 @@ public class InstructionFactory {
     }
 
     /**
-     * Returns an instance of the instruction ready to be execute by the mahcine.
+     * Returns an instance of the instruction ready to be executed by the machine.
      *
      * @param args arguments for the instruction as specified in the program
      * @return instance of Instruction
@@ -90,11 +80,10 @@ public class InstructionFactory {
 
         try {
             Class<? extends Instruction> instructionClass = getInstructionClass(opcode);
-
             Constructor<? extends Instruction> instructionConstructor = (Constructor<? extends Instruction>) instructionClass.getConstructors()[0];
             Object[] constructorArgs = getConstructorArguments(instructionConstructor, elements);
             return instructionConstructor.newInstance(constructorArgs);
-        } catch (InstructionNotFoundException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+        } catch (InstructionNotFoundException | InstantiationException | InvocationTargetException | IllegalAccessException e) {
             return null;
         }
     }
@@ -117,5 +106,14 @@ public class InstructionFactory {
         }
     }
 
+}
 
+/**
+ * Exception happens when it is not possible to find the code that handles an opcode.
+ */
+class InstructionNotFoundException extends Exception {
+
+    public InstructionNotFoundException(String message) {
+        super(message);
+    }
 }
