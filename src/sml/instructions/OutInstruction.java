@@ -1,13 +1,15 @@
 package sml.instructions;
 
+import lombok.RequiredArgsConstructor;
 import sml.Instruction;
 import sml.Machine;
 
+@RequiredArgsConstructor
 public class OutInstruction implements Instruction {
     private static final String OPCODE = "out";
 
-    private String label;
-    private int register;
+    private final String label;
+    private final int register;
 
     /**
      * Returns the label of the instruction.
